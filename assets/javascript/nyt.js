@@ -1,7 +1,5 @@
 'use strict';
 
-var main;
-
 $('#submit').on('click', function() {
 
     var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
@@ -18,11 +16,9 @@ $('#submit').on('click', function() {
         url: url,
         method: 'GET',
 
-    }).done(function(response) {
+    }).done(function(result) {
         
-        // main = response.docs.headline.main;
-
-        $('#output').html(response.docs[0].headline.main);
+        console.log(result);
 
     }).fail(function(err) {
 
