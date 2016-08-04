@@ -18,7 +18,7 @@ $('#submit').on('click', function() {
 
     }).done(function(result) {
         
-        console.log(result);
+        $('#output').html("Article title: "+result.response.docs[0].headline.main);
 
     }).fail(function(err) {
 
