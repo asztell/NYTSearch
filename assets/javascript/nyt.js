@@ -3,8 +3,15 @@
 $('#submit').on('click', function() {
 
     var $search_term = $('#search_term').val(),
-        $start_year = $('#start_year').val(),
-        $end_year = $('#end_year').val(),
+
+        //use this with <input> type="text"
+        $start_year = parseInt($('#start_year').val()+'0101'),
+        $end_year = parseInt($('#end_year').val()+'0101'),
+
+
+        // // use this with <input> type="date"
+        // $start_year = parseInt($('#start_year').val().replace(/-/g, '')),
+        // $end_year = parseInt($('#end_year').val().replace(/-/g, '')),
 
         url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
 
@@ -20,12 +27,9 @@ $('#submit').on('click', function() {
 
 
     console.log(url);
-    $.ajax({
-        
-        url: url,
-        method: 'GET',
+    $.ajax({ url: url, method: 'GET' })
 
-    }).done(function(result) {
+    .done(function(result) {
 
         console.log(result);
         // $('#output').html(
@@ -33,9 +37,9 @@ $('#submit').on('click', function() {
         //             // +   "<h5>"+result.response.docs[0].headline.main+"</h5>"
         //             );
 
-    // }).fail(function(err) {
+    }).fail(function(err) {
 
-    //     throw err;
+        throw err;
 
     });
 
